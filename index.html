@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>💘 Valentine?</title>
+  <style>
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background: linear-gradient(135deg, #ffe6f1, #fff);
+      overflow:hidden;
+    }
+    .card{
+      background:#ffffffdd;
+      padding:28px 22px;
+      border-radius:24px;
+      width:min(760px,92vw);
+      text-align:center;
+      box-shadow:0 20px 60px rgba(0,0,0,.15);
+    }
+    h1{font-size:clamp(26px,4vw,42px); margin-bottom:10px;}
+    .sub{opacity:.85; margin-bottom:14px;}
+    .code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      background:#f2f2f2;
+      border-radius:14px;
+      padding:10px 12px;
+      display:inline-block;
+      margin-bottom:16px;
+    }
+    img{
+      width:min(360px,80vw);
+      border-radius:18px;
+      margin:14px 0;
+    }
+    button{
+      padding:14px 18px;
+      border-radius:16px;
+      font-size:18px;
+      border:none;
+      cursor:pointer;
+      min-width:160px;
+      margin:6px;
+    }
+    #yes{
+      background:linear-gradient(135deg,#ff3d83,#ff77a6);
+      color:white;
+      font-weight:700;
+    }
+    #no{
+      background:white;
+      border:1px solid #ccc;
+      position:absolute;
+    }
+    #playArea{
+      position:relative;
+      height:120px;
+      margin-top:10px;
+    }
+    #success{display:none;}
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <div id="question">
+    <h1>Marc Harvey, will you be my Valentine? 💘</h1>
+    <p class="sub">From your favorite human — no bugs, only hugs 🥺</p>
+
+    <div class="code">
+      if (MarcHarvey === myValentine) {<br>
+      &nbsp;&nbsp;return "infinite kisses 💋";<br>
+      }
+    </div>
+
+    <div>
+      <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" alt="cute cat">
+    </div>
+
+    <button id="yes">YES 💖</button>
+
+    <div id="playArea">
+      <button id="no">NO 🙅‍♂️</button>
+    </div>
+
+    <p style="font-size:13px;opacity:.7;">No is not a valid option 😈</p>
+  </div>
+
+  <div id="success">
+    <h1>YAY!!! 💖</h1>
+    <p>Marc Harvey is officially my Valentine 🥰</p>
+    <img src="https://media.giphy.com/media/l4FGpPki5v2Bcd6Ss/giphy.gif" alt="cat kiss">
+    <p style="font-size:13px;opacity:.7;">I choose you — always 💌</p>
+  </div>
+</div>
+
+<script>
+  const yes = document.getElementById('yes');
+  const no = document.getElementById('no');
+  const play = document.getElementById('playArea');
+  const q = document.getElementById('question');
+  const s = document.getElementById('success');
+
+  yes.onclick = () => {
+    q.style.display = 'none';
+    s.style.display = 'block';
+  };
+
+  function moveNo(){
+    const x = Math.random() * (play.offsetWidth - no.offsetWidth);
+    const y = Math.random() * (play.offsetHeight - no.offsetHeight);
+    no.style.left = x + 'px';
+    no.style.top = y + 'px';
+  }
+
+  no.onmouseenter = moveNo;
+  no.ontouchstart = (e) => { e.preventDefault(); moveNo(); };
+  no.onclick = moveNo;
+  moveNo();
+</script>
+
+</body>
+</html>
